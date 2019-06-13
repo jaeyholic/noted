@@ -114,7 +114,12 @@ const App = () => {
     auth.setPersistence(firebase.auth.Auth.Persistence.SESSION).then(() => {
       auth
         .signInWithEmailAndPassword(email, password)
-        .then(res => showLogin(e))
+        .then(res => {
+          showLogin(e);
+          alert.show('successfully logged in', {
+            type: 'success'
+          });
+        })
         .catch(error => {
           alert.show(error.message, {
             type: 'error'
