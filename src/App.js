@@ -85,7 +85,12 @@ const App = () => {
       } else {
         auth
           .createUserWithEmailAndPassword(email, password)
-          .then(res => showCreateModal(e))
+          .then(res => {
+            showCreateModal(e);
+            alert.show('Successfully Registered', {
+              type: 'success'
+            });
+          })
           .catch(error => {
             alert.show(error.message, {
               type: 'error'
@@ -131,6 +136,9 @@ const App = () => {
   //Logout
   const logout = () => {
     auth.signOut();
+    alert.show('Successfully Logged Out', {
+      type: 'success'
+    });
   };
 
   useEffect(() => {
